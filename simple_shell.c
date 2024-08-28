@@ -55,7 +55,9 @@ int main(void)
 		}
 		else if (pid == 0)
 		{
-			char *argv [] = {text, NULL};
+			char *argv [2];
+			argv[0] = text;
+			argv[1] = NULL;
 			if (execve(text, argv, NULL) == -1)
 			{
 				perror("error");
