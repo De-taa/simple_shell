@@ -46,8 +46,8 @@ int main(void)
 	int position;
 
 	while (1)
-	{
-		printf("simpleshell$ ");
+	{	if(isatty(STDIN_FILENO))
+			printf("simpleshell$ ");
 		lineread = getline(&text, &lent, stdin);
 		if (lineread == -1)
 		{
