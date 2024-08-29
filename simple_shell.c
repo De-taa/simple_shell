@@ -78,10 +78,12 @@ int main(void)
 			continue;
 		}
 		text[strcspn(text, "\n")] = '\0';
+		if (is_empty(text))
+			continue;
+		 if (strlen(text) > 255)
+			continue;
 		if(strcmp(text, "exit") == 0)
 			break;
-		 if (strlen(text) == 0)
-			continue;
 		pid = fork();
 		if (pid == -1)
 		{
