@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <ctype.h>
 
 /**
  * errorGetline - Entry  point for the errorGetlinem
@@ -32,6 +33,23 @@ int errorGetline(ssize_t lineread)
 	}
 	return (0);
 }
+/**
+ * is_empty - Checks if a string is empty or contains only whitespace
+ * @str: The string to check
+ *
+ * Return: 1 if the string is empty or white space, 0 otherwise
+ */
+int is_empty(const char *str)
+{
+	while (*str)
+	{
+		if (!isspace((unsigned char)*str))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
 
 /**
  * main - Entry  point for the prompt
