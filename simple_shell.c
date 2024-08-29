@@ -54,9 +54,8 @@ int main(void)
 			if (errorGetline(lineread))
 				break;
 		}
-
-		if (strlen(text) == 0)
 		text[strcspn(text, "\n")] = '\0';
+		 if (strlen(text) == 0)
 			continue;
 		pid = fork();
 		if (pid == -1)
