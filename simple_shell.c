@@ -9,7 +9,8 @@
  * main - Entry point for the simple_shell prompt program
  *
  * This program displays a prompt, reads a line of input from the user
- * The program forks a child process to execute a command and wait for the child process to finish
+ * The program forks a child process to execute a command and
+ * wait for child process to execute
  * the program handle error and continue to display prompt until the user exit
  *
  * Return - Return 0 on sucess
@@ -55,7 +56,8 @@ int main(void)
 		}
 		else if (pid == 0)
 		{
-			char *argv [2];
+			char *argv[2];
+
 			argv[0] = text;
 			argv[1] = NULL;
 			if (execve(text, argv, NULL) == -1)
