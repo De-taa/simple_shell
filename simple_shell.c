@@ -17,16 +17,20 @@
  */
 int errorGetline(ssize_t lineread)
 {
-	if (feof(stdin))
+	if (lineread == -1)
 	{
-		printf("\n");
-		return (1);
+		if (feof(stdin))
+			{
+				printf("\n");
+				return (1);
+			}
+		else
+			{
+				perror("getline");
+				return (0);
+			}
 	}
-	else
-	{
-		perror("getline");
-		return (0);
-	}
+	return (0);
 }
 
 /**
@@ -53,8 +57,11 @@ int main(void)
 		{
 			if (errorGetline(lineread))
 				break;
+			continue;
 		}
 		text[strcspn(text, "\n")] = '\0';
+		if(strcmp(text, "exit") == 0)
+			break;
 		 if (strlen(text) == 0)
 			continue;
 		pid = fork();
